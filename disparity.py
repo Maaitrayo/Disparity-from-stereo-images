@@ -1,11 +1,24 @@
+# ********************************************* IMPORTING MODULES *********************************************
 import numpy as np
 import cv2
 from matplotlib import pyplot as plt
 import glob
+# ********************************************* IMPORTING MODULES *********************************************
+
+
+
+left_img_file_path = input("Enter the left images folder path:\n") 
+right_img_file_path = input("Enter the right images folder path:\n") 
+disparity_type = int(input("Enter the type of disparity, 1 for SBGM and 2 for BM:\n "))
+disparity_value = int(input("Do you want to print the disparity value(Matrix)?, 1 for YES and 0 for NO:\n "))
+image_show = int(input("Do you want to see anyone of the original stereo image?, 1 for YES and 0 for NO:\n "))
+
+
 
 # ***************************************************** DATASET HANDLER *****************************************************
 # getting the file path for my left image dataset
-path_left = glob.glob("/home/maaitrayo/Autonomous Vehicle/Datasets_short_IMU_GPS_STEREO/2011_09_26_drive_0001_sync/image_00/data/*.png") # LEFT IMAGES
+#path_left = glob.glob("/home/maaitrayo/Autonomous Vehicle/Datasets_short_IMU_GPS_STEREO/2011_09_26_drive_0001_sync/image_00/data/*.png") # LEFT IMAGES
+path_left = glob.glob(left_img_file_path+"/*.png") # LEFT IMAGES
 # creating a list to store the file path consecutively 
 lst_left = []
 for file in path_left:
@@ -15,7 +28,7 @@ lst_left.sort()
 arr_left = np.array(lst_left)
 
 # getting the file path for my right image dataset
-path_right = glob.glob("/home/maaitrayo/Autonomous Vehicle/Datasets_short_IMU_GPS_STEREO/2011_09_26_drive_0001_sync/image_01/data/*.png") # RIGHT IMAGES
+path_right = glob.glob(right_img_file_path+"/*.png") # RIGHT IMAGES
 # creating a list to store the file path consecutively
 lst_right = []
 for file in path_right:
@@ -24,6 +37,9 @@ for file in path_right:
 lst_right.sort()
 arr_right = np.array(lst_right)
 # ***************************************************** DATASET HANDLER ENDS *****************************************************
+
+
+
 
 # ***************************************************** DISPARITY FOR STEREO IMAGE PAIR HANDLER FUNCTIONS *****************************************************
 
@@ -72,9 +88,6 @@ def calculate_disparity_BM(img_L_g, img_R_g):
 # ***************************************************** DISPARITY FOR STEREO IMAGE PAIR HANDLER FUNCTIONS ENDS *****************************************************
 
 
-disparity_type = int(input("Enter the type of disparity, 1 for SBGM and 2 for BM:\n "))
-disparity_value = int(input("Do you want to print the disparity value(Matrix)?, 1 for YES and 0 for NO:\n "))
-image_show = int(input("Do you want to see anyone of the original stereo image?, 1 for YES and 0 for NO:\n ")) 
 
 for i in range(len(arr_right)):
     img_L = cv2.imread(arr_left[i])
