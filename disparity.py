@@ -1,7 +1,10 @@
+# ********************************************* IMPORTING MODULES *********************************************
 import numpy as np
 import cv2
 from matplotlib import pyplot as plt
 import glob
+# ********************************************* IMPORTING MODULES *********************************************
+
 
 
 left_img_file_path = input("Enter the left images folder path:\n") 
@@ -9,6 +12,8 @@ right_img_file_path = input("Enter the right images folder path:\n")
 disparity_type = int(input("Enter the type of disparity, 1 for SBGM and 2 for BM:\n "))
 disparity_value = int(input("Do you want to print the disparity value(Matrix)?, 1 for YES and 0 for NO:\n "))
 image_show = int(input("Do you want to see anyone of the original stereo image?, 1 for YES and 0 for NO:\n "))
+
+
 
 # ***************************************************** DATASET HANDLER *****************************************************
 # getting the file path for my left image dataset
@@ -32,6 +37,8 @@ for file in path_right:
 lst_right.sort()
 arr_right = np.array(lst_right)
 # ***************************************************** DATASET HANDLER ENDS *****************************************************
+
+
 
 
 # ***************************************************** DISPARITY FOR STEREO IMAGE PAIR HANDLER FUNCTIONS *****************************************************
@@ -79,6 +86,7 @@ def calculate_disparity_BM(img_L_g, img_R_g):
     #plt.imshow(img_disparityA_BM)
 
 # ***************************************************** DISPARITY FOR STEREO IMAGE PAIR HANDLER FUNCTIONS ENDS *****************************************************
+
 
 
 for i in range(len(arr_right)):
