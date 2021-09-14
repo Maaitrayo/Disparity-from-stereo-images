@@ -5,7 +5,7 @@ import glob
 
 # ***************************************************** DATASET HANDLER *****************************************************
 # getting the file path for my left image dataset
-path_left = glob.glob("/home/maaitrayo/Autonomous Vehicle/2011_09_26/2011_09_26_drive_0001_sync/image_00/data/*.png") # LEFT IMAGES
+path_left = glob.glob("/home/maaitrayo/Autonomous Vehicle/Datasets_short_IMU_GPS_STEREO/2011_09_26_drive_0001_sync/image_00/data/*.png") # LEFT IMAGES
 # creating a list to store the file path consecutively 
 lst_left = []
 for file in path_left:
@@ -15,7 +15,7 @@ lst_left.sort()
 arr_left = np.array(lst_left)
 
 # getting the file path for my right image dataset
-path_right = glob.glob("/home/maaitrayo/Autonomous Vehicle/2011_09_26/2011_09_26_drive_0001_sync/image_01/data/*.png") # RIGHT IMAGES
+path_right = glob.glob("/home/maaitrayo/Autonomous Vehicle/Datasets_short_IMU_GPS_STEREO/2011_09_26_drive_0001_sync/image_01/data/*.png") # RIGHT IMAGES
 # creating a list to store the file path consecutively
 lst_right = []
 for file in path_right:
@@ -107,6 +107,6 @@ for i in range(len(arr_right)):
 
 
     plt.show()
-    cv2.waitKey(0)
+    cv2.waitKey(30)
 
 cv2.destroyAllWindows()
